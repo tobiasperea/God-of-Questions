@@ -5,7 +5,7 @@ pygame.init() #Se inicializa pygame
 pantalla_tamaño = (500, 500)
 pantalla = pygame.display.set_mode(pantalla_tamaño)
 pygame.display.set_caption("God of Questions")
-imagen = pygame.image.load('C:/Users/12345/Desktop/segund par/god-of-questions.png')
+imagen = pygame.image.load("imagenes/god-of-questions.png")
 imagen = pygame.transform.scale(imagen, (500,500))
 carta_pregunta = pygame.Surface(((350,150)))
 
