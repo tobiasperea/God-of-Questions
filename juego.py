@@ -16,7 +16,7 @@ marco_pregunta = pygame.image.load("imagenes/marco.png") #se carga el marco de l
 pantalla.blit(imagen,(0,0))# se carga el fondo
 pantalla.blit(marco_pregunta,(40,250))#se carga el marco objetivo
 pantalla.blit(marco_pregunta,(40,380))
-pantalla.blit(marco_pregunta,(300,250))
+pantalla.blit(marco_pregunta,(0,250))
 pantalla.blit(marco_pregunta,(300,380))
 #jugar= "Jugar"
 #fuente = pygame.font.SysFont("Arial Narrow", 48)
