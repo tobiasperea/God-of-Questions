@@ -1,10 +1,12 @@
 import pygame
 from constantes import *
+from zeustereta import *
 from menu import *
 #from juego import *
 pygame.init() #Se inicializa pygame
 #------------------fondo----------------------------
 pantalla = pygame.display.set_mode([500, 500])
+pygame.display.set_caption("God of Questions")
 
 #def cargar_animacion():
 #   zeus = pygame.image.load("imagenes/zeus.png")
@@ -18,7 +20,9 @@ FPS = 60
 clock = pygame.time.Clock() 
 pygame.display.flip()
 MUSICA_MENU.play(-1)
-sonido_menu = pygame.mixer.Sound("musicaysonidos\Taco Bell Bong - Sound Effect (HD).mp3")
+
+
+
 aux = 1
 while corriendo:
     clock.tick(FPS)
@@ -27,7 +31,15 @@ while corriendo:
         ventana_actual = mostrar_menu(pantalla,pygame.event.get())
 #   elif ventana_actual == 'opciones':
 #       ventana_actual = mostrar_opciones(pantalla,pygame.event.get())
-#   elif ventana_actual == 'juego':
+    elif ventana_actual == "juego":
+        ventana_actual = cargar_animacion(pantalla, pygame.event.get())
+        MUSICA_MENU.stop()
+        
+       
+    
+            
+        
+    
 #       if bandera_juego:
 #           pygame.mixer.music.load("musica.mp3") #Define musica de fondo mientras juego
 #           pygame.mixer.music.play(-1)
@@ -41,9 +53,10 @@ while corriendo:
 #           pygame.mixer.music.stop() #Detiene mi música de fondo
 #           bandera_juego = True
 #       ventana_actual = mostrar_juego_terminado(pantalla,pygame.event.get(),juego.puntuacion)
-    elif ventana_actual == 'salir':
+    
+    elif ventana_actual == "salir":
         corriendo = False
-            
+                       
     pygame.display.flip() #ACTUALIZA LA INFORMACION
 
 pygame.quit()

@@ -17,28 +17,34 @@ marco_rect2 = marco_rankign.get_rect(topleft=(40, 380))
 marco_rect3 = marco_opciones.get_rect(topleft=(300, 250))
 marco_rect4 = marco_salir.get_rect(topleft=(300, 380))
 #-------------Sonido------------------------------
-#click_sonido = pygame.mixer.Sound("musicaysonidos\Taco Bell Bong - Sound Effect (HD).mp3")
-#click_sonido.set_volume(1)
+click_sonido = pygame.mixer.Sound("musicaysonidos/Taco Bell Bong - Sound Effect (HD).mp3")
+click_sonido.set_volume(1)
+musica_smash = pygame.mixer.Sound("musicaysonidos/zeus-aparece.mp3")
+
+    
+
+
 
 def mostrar_menu(pantalla:pygame.Surface,eventos):
     retorno = "menu"#Un estado de la ventana en la que estoy parado
     
     for evento in eventos:
         if evento.type == pygame.MOUSEBUTTONDOWN:
-            if marco_rect1["rectangulo"].collidepoint(evento.pos):
+            if marco_rect1.collidepoint(evento.pos):
                 print("JUGAR")
- #               click_sonido.play()
+                click_sonido.play()
+                musica_smash.play()
                 retorno = "juego"
-            elif marco_rect3["rectangulo"].collidepoint(evento.pos):
+            elif marco_rect3.collidepoint(evento.pos):
                 print("OPCIONES")
-  #              click_sonido.play()
-                retorno = "opciones"
-            elif marco_rect2["rectangulo"].collidepoint(evento.pos):
+                click_sonido.play()
+                #retorno = "opciones"
+            elif marco_rect2.collidepoint(evento.pos):
                 print("PUNTUACIONES")
-   #             click_sonido.play()
-                retorno = "puntuaciones"
-            elif marco_rect4["rectangulo"].collidepoint(evento.pos):
-    #            click_sonido.play()
+                click_sonido.play()
+                #retorno = "puntuaciones"
+            elif marco_rect4.collidepoint(evento.pos):
+                click_sonido.play()
                 print("SALIR")
                 retorno = "salir"
         elif evento.type == pygame.QUIT:
