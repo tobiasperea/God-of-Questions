@@ -38,7 +38,7 @@ def mostrar_menu(pantalla:pygame.Surface,eventos):
             elif marco_rect3.collidepoint(evento.pos):
                 print("OPCIONES")
                 click_sonido.play()
-                #retorno = "opciones"
+                retorno = "opciones"
             elif marco_rect2.collidepoint(evento.pos):
                 print("PUNTUACIONES")
                 click_sonido.play()

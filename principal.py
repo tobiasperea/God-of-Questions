@@ -1,6 +1,7 @@
 import pygame
 from constantes import *
 from zeustereta import *
+from opciones import *
 from menu import *
 #from juego import *
 pygame.init() #Se inicializa pygame
@@ -20,6 +21,7 @@ FPS = 60
 clock = pygame.time.Clock() 
 pygame.display.flip()
 MUSICA_MENU.play(-1)
+MUSICA_MENU.set_volume(volumen_musica)
 
 
 
@@ -34,6 +36,8 @@ while corriendo:
     elif ventana_actual == "juego":
         ventana_actual = cargar_animacion(pantalla, pygame.event.get())
         MUSICA_MENU.stop()
+    elif ventana_actual == "opciones":
+        ventana_actual = mostrar_opciones(pantalla,pygame.event.get())
         
        
     
