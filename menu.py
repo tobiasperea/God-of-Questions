@@ -1,5 +1,6 @@
 import pygame
 from constantes import *
+from opciones import *
 
 pygame.init()
 #fondo
@@ -18,7 +19,7 @@ marco_rect3 = marco_opciones.get_rect(topleft=(300, 250))
 marco_rect4 = marco_salir.get_rect(topleft=(300, 380))
 #-------------Sonido------------------------------
 click_sonido = pygame.mixer.Sound("musicaysonidos/Taco Bell Bong - Sound Effect (HD).mp3")
-click_sonido.set_volume(1)
+click_sonido.set_volume(volumen_sonidos)
 musica_smash = pygame.mixer.Sound("musicaysonidos/zeus-aparece.mp3")
 
     
