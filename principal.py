@@ -1,6 +1,7 @@
 import pygame
 from constantes import *
 from zeustereta import *
+from juego import *
 from opciones import *
 from menu import *
 #from juego import *
@@ -34,8 +35,9 @@ while corriendo:
 #   elif ventana_actual == 'opciones':
 #       ventana_actual = mostrar_opciones(pantalla,pygame.event.get())
     elif ventana_actual == "juego":
-        ventana_actual = cargar_animacion(pantalla, pygame.event.get())
+        #ventana_actual = cargar_animacion(pantalla, pygame.event.get())
         MUSICA_MENU.stop()
+        ventana_actual = mostrar_juego(pantalla,pygame.event.get())
     elif ventana_actual == "opciones":
         ventana_actual = mostrar_opciones(pantalla,pygame.event.get())
         

@@ -47,7 +47,7 @@ def mostrar_opciones(pantalla:pygame.Surface,eventos):
             elif marco_musica.collidepoint(evento.pos):
                 MUSICA_MENU.stop()
                 if marco_actual_musica == "mute":
-                    MUSICA_MENU.play()
+                    MUSICA_MENU.play(-1)
                     marco_actual_musica = "mariano"
                 else:
                     marco_actual_musica = "mute"
