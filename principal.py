@@ -4,6 +4,7 @@ from zeustereta import *
 from juego import *
 from opciones import *
 from menu import *
+from configurar_preguntas import *
 #from juego import *
 pygame.init() #Se inicializa pygame
 #------------------fondo----------------------------
@@ -40,7 +41,9 @@ while corriendo:
         ventana_actual = mostrar_juego(pantalla,pygame.event.get())
     elif ventana_actual == "opciones":
         ventana_actual = mostrar_opciones(pantalla,pygame.event.get())
-        
+    elif ventana_actual == "agregar":
+        ventana_actual = mostrar_agregar_opciones(pantalla,pygame.event.get())
+          
        
     
             
