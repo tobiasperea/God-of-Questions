@@ -23,7 +23,7 @@ def blit_text(surface, text, pos, font, color=pygame.Color('black')):
         y += word_height  # Start on new row.
 
 pygame.init()
-marco_pregunta1 = pygame.image.load("imagenes/cuadrado_prueba.png")
+marco_pregunta1 = pygame.image.load("imagenes\cuadrado_prueba.png")
 carta_pregunta = {"superficie":pygame.Surface((350,150)),"rectangulo":pygame.Rect((0,0,0,0))}
 
 imagen_juego = pygame.image.load("imagenes/zeus.png")#Se carga la imagen de fondo
@@ -75,14 +75,14 @@ def mostrar_juego(pantalla:pygame.Surface,eventos):
         if evento.type == pygame.MOUSEBUTTONDOWN:
             for i in range(len(cartas_respuestas)):
                 if cartas_respuestas[i]["rectangulo"].collidepoint(evento.pos):
-                    if pregunta["correcta"] ==  i + 1:
+                    if pregunta["correcta"] ==  (i + 1):
                         click_sonido.play()
                         print("RESPUESTA CORRECTA") 
                         carta_pregunta['superficie'].fill((0,0,0))
                         for carta in cartas_respuestas:
                             carta['superficie'].blit(marco_pregunta1, (0,0))
 
-                        indice_pregunta = +1    
+                        indice_pregunta += 1    
 
                         if indice_pregunta != len(lista_preguntas):
                                 pregunta = lista_preguntas[indice_pregunta]

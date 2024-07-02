@@ -24,3 +24,9 @@ def parse_csv(nombre_archivo:str)->list:
         return lista_elementos
 
 lista_preguntas = parse_csv("preguntas.csv")
+def convertir_correcta_a_int(preguntas):
+    for pregunta in preguntas:
+        pregunta['correcta'] = int(pregunta['correcta'])
+    return preguntas
+
+lista_preguntas =convertir_correcta_a_int(lista_preguntas)
