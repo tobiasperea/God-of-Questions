@@ -1,16 +1,19 @@
-import pygame 
+import pygame
+import json
+from datetime import datetime
 from constantes import *
 from juego import *
 
 pygame.init()
 fondo = pygame.image.load("imagenes/caronte.png")
-fondo = pygame.transform.scale(fondo, (500,500))
+fondo = pygame.transform.scale(fondo, (500, 500))
 cuadro_texto = pygame.image.load("imagenes/cuadrado_prueba.png")
-fuente =  pygame.font.SysFont("Arial Narrow",40)
-cuadro = {"superficie":pygame.Surface((250,50)),"rectangulo":pygame.Rect(0,0,0,0)}
-cuadro['superficie'].blit(cuadro_texto,(0,0))
+fuente = pygame.font.SysFont("Arial Narrow", 40)
+cuadro = {"superficie": pygame.Surface((250, 50)), "rectangulo": pygame.Rect(0, 0, 0, 0)}
+cuadro['superficie'].blit(cuadro_texto, (0, 0))
 
 nombre = ""
+
 def blit_text(surface, text, pos, font, color=pygame.Color('black')):
     words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.
     space = font.size(' ')[0]  # The width of a space.
@@ -28,7 +31,16 @@ def blit_text(surface, text, pos, font, color=pygame.Color('black')):
         x = pos[0]  # Reset the x.
         y += word_height  # Start on new row.
 
-def mostrar_juego_terminado(pantalla:pygame.Surface,eventos,puntuacion):
+def guardar_nombre(nombre, puntuacion):
+    datos = {
+        "nombre": nombre,
+        "puntuacion": puntuacion,
+        "fecha": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }
+    with open("partidas.json", "a") as archivo:
+        archivo.write(json.dumps(datos) + "\n")
+
+def mostrar_juego_terminado(pantalla:pygame.Surface, eventos, puntuacion):
     global nombre
     retorno = "terminado"
     
@@ -50,7 +62,12 @@ def mostrar_juego_terminado(pantalla:pygame.Surface,eventos,puntuacion):
                 if bloc_mayus:
                     nombre += letra_presionada.upper()
                 else:
-                    nombre += letra_presionada        
+                    nombre += letra_presionada  
+
+            if len(nombre) == 4:
+                guardar_nombre(nombre,puntuacion)
+                retorno="salir"
+                  
         elif evento.type == pygame.QUIT:
             retorno = "salir"
         pantalla.blit(fondo,(0,0))
@@ -61,3 +78,5 @@ def mostrar_juego_terminado(pantalla:pygame.Surface,eventos,puntuacion):
         blit_text(pantalla,f"Obtuviste {puntuacion} puntos mortal, cual es tu nombre",(100,250),fuente,(250,250,250))
         
     return retorno
+
+    

@@ -2,6 +2,7 @@ import pygame
 from opciones import *
 from constantes import *
 from funciones import *
+from configurar_preguntas import *
 import random
 import json
 import os
@@ -23,8 +24,10 @@ def blit_text(surface, text, pos, font, color=pygame.Color('black')):
         y += word_height  # Start on new row.
 
 pygame.init()
-marco_pregunta1 = pygame.image.load("imagenes/cuadrado_prueba.png")
-carta_pregunta = {"superficie":pygame.Surface((300,100)),"rectangulo":pygame.Rect((0,0,0,0))}
+marco_pregunta1 = pygame.image.load("imagenes/marco_pregunta1.png")
+marco_respuesta = pygame.image.load("imagenes/marco_respuesta.png")
+carta_pregunta = {"superficie":pygame.Surface((280,100)),"rectangulo":pygame.Rect((0,0,0,0))}
+carta_pregunta["superficie"].blit(marco_pregunta1, (0,0))
 
 imagen_juego = pygame.image.load("imagenes/zeus.png")#Se carga la imagen de fondo
 
@@ -45,10 +48,10 @@ cartas_respuestas = [
     {"superficie":pygame.Surface((100,60)),"rectangulo":pygame.Rect((0,0,0,0))} #R4 -> 3
 ]
 for carta in cartas_respuestas:
-    carta['superficie'].blit(marco_pregunta1, (0,0))
+    carta['superficie'].blit(marco_respuesta, (0,0))
 fuente_pregunta = pygame.font.SysFont("Argelian",30)
-fuente_respuesta = pygame.font.SysFont("Arial Narrow",20)
-fuente_puntuacion = pygame.font.SysFont("Arial Narrow",20)
+fuente_respuesta = pygame.font.SysFont("Argelian",20)
+fuente_puntuacion = pygame.font.SysFont("Argelian",20)
 
 click_sonido = pygame.mixer.Sound("musicaysonidos/Taco Bell Bong - Sound Effect (HD).mp3")
 click_sonido.set_volume(volumen_sonidos)
@@ -56,10 +59,11 @@ random.shuffle(lista_preguntas)
 
 indice_pregunta = 0
 puntuacion = 0
-
-limite_tiempo = 10
+vidas = cantidad_oportunidades
+limite_tiempo = cantidad_tiempo
 tiempo_inicial = 0
 tiempo_inicializado = False
+puntos = cantidad_puntos
 tiempo_inicial = pygame.time.get_ticks()
 
 def mostrar_juego(pantalla:pygame.Surface,eventos):
@@ -68,6 +72,8 @@ def mostrar_juego(pantalla:pygame.Surface,eventos):
     global tiempo_inicial
     global tiempo_inicializado
     global puntuacion
+    global vidas
+    global cantidad_puntos
     retorno = "juego"#Un estado de la ventana en la que estoy parado
     if not tiempo_inicializado:
         tiempo_inicial = pygame.time.get_ticks()
@@ -96,9 +102,9 @@ def mostrar_juego(pantalla:pygame.Surface,eventos):
                     if pregunta["correcta"] ==  (i + 1):
                         click_sonido.play()
                         print("RESPUESTA CORRECTA") 
-                        carta_pregunta['superficie'].fill((0,0,0))
+                        carta_pregunta['superficie'].blit(marco_pregunta1, (0,0))
                         for carta in cartas_respuestas:
-                            carta['superficie'].blit(marco_pregunta1, (0,0))
+                            carta['superficie'].blit(marco_respuesta, (0,0))
 
                         indice_pregunta += 1    
 
@@ -110,18 +116,22 @@ def mostrar_juego(pantalla:pygame.Surface,eventos):
                             random.shuffle(lista_preguntas)
                             pregunta = lista_preguntas[indice_pregunta]
                         #cartas_respuestas[i]['superficie'].fill(COLOR_VERDE)
-                        puntuacion += 100
+                        puntuacion += cantidad_puntos
                         
                     else:
                         print("RESPUESTA INCORRECTA")
-                        carta_pregunta['superficie'].fill((0,0,0))
+                        carta_pregunta['superficie'].blit(marco_pregunta1, (0,0))
                         for carta in cartas_respuestas:
-                            carta['superficie'].blit(marco_pregunta1, (0,0))
+                            carta['superficie'].blit(marco_respuesta, (0,0))
+                        
+                        vidas -= 1
+                        if vidas <= 0:
+                            retorno = "terminado"
+                        else:
+                        
+                            indice_pregunta+=1    
                         
                         
-                        indice_pregunta+=1    
-                        
-                        retorno = "terminado"
                         
                         if indice_pregunta != len(lista_preguntas):
                                 pregunta = lista_preguntas[indice_pregunta]
@@ -142,25 +152,27 @@ def mostrar_juego(pantalla:pygame.Surface,eventos):
 
     pantalla.blit(carta_pregunta['superficie'],(100,150))
     #Muestro el texto (USANDO PANTALLA)
-    blit_text(carta_pregunta['superficie'],pregunta['preguntas'],(10,10),fuente_pregunta,(255,255,255))
+    blit_text(carta_pregunta['superficie'],pregunta['preguntas'],(10,10),fuente_pregunta,(255,243,0))
     
     cartas_respuestas[0]['rectangulo'] = pantalla.blit(cartas_respuestas[0]['superficie'],(50, 300))
-    blit_text(cartas_respuestas[0]["superficie"],pregunta['respuesta_1'],(10,10),fuente_respuesta,(255,255,255))
+    blit_text(cartas_respuestas[0]["superficie"],pregunta['respuesta_1'],(20,20),fuente_respuesta,(255,243,0))
    
     #IMPRIMO EN PANTALLA LA CARTA R2 Y SU TEXTO
     cartas_respuestas[1]['rectangulo'] = pantalla.blit(cartas_respuestas[1]['superficie'],(300, 300))
-    blit_text(cartas_respuestas[1]["superficie"],pregunta['respuesta_2'],(10,10),fuente_respuesta,(255,255,255))
+    blit_text(cartas_respuestas[1]["superficie"],pregunta['respuesta_2'],(20,20),fuente_respuesta,(255,243,0))
    
     #IMPRIMO EN PANTALLA LA CARTA R3 Y SU TEXTO
     cartas_respuestas[2]['rectangulo'] = pantalla.blit(cartas_respuestas[2]['superficie'],(50, 400))
-    blit_text(cartas_respuestas[2]["superficie"],pregunta['respuesta_3'],(10,10),fuente_respuesta,(255,255,255))
+    blit_text(cartas_respuestas[2]["superficie"],pregunta['respuesta_3'],(20,20),fuente_respuesta,(255,243,0))
    
     #IMPRIMO EN PANTALLA LA CARTA R4 Y SU TEXTO
     cartas_respuestas[3]['rectangulo'] = pantalla.blit(cartas_respuestas[3]['superficie'],(300, 400))
-    blit_text(cartas_respuestas[3]["superficie"],pregunta['respuesta_4'],(10,10),fuente_respuesta,(255,255,255))
+    blit_text(cartas_respuestas[3]["superficie"],pregunta['respuesta_4'],(20,20),fuente_respuesta,(255,243,0))
 
-    blit_text(pantalla,f"Puntuación: {puntuacion} puntos",(10,10),fuente_puntuacion,(0,0,0))
+    blit_text(pantalla,f"Puntuación: {puntuacion} puntos",(10,10),fuente_puntuacion,(255,0,0))
 
-    blit_text(pantalla, f"Tiempo: {int(tiempo_restante)}", (10, 50), fuente_puntuacion, (255, 255, 255))
+    blit_text(pantalla, f"Tiempo: {int(tiempo_restante)}", (10, 50), fuente_puntuacion, (255,243,0))
+
+    blit_text(pantalla,f"Vidas: {int(vidas)}", (10, 80), fuente_puntuacion, (255,243,0))
     
     return retorno

@@ -3,6 +3,7 @@ import pygame.locals
 from opciones import *
 from constantes import *
 from funciones import *
+import juego
 
 pygame.init()
 
