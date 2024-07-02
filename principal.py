@@ -6,6 +6,9 @@ from juego import *
 from opciones import *
 from menu import *
 from configurar_preguntas import *
+from terminado import *
+import juego
+import opciones
 #from juego import *
 pygame.init() #Se inicializa pygame
 #------------------fondo----------------------------
@@ -37,13 +40,18 @@ while corriendo:
 #   elif ventana_actual == 'opciones':
 #       ventana_actual = mostrar_opciones(pantalla,pygame.event.get())
     elif ventana_actual == "juego":
-        #ventana_actual = cargar_animacion(pantalla, pygame.event.get())
-        
+        if bandera_juego:
+            bandera_juego = False
         ventana_actual = mostrar_juego(pantalla,pygame.event.get())
     elif ventana_actual == "opciones":
         ventana_actual = mostrar_opciones(pantalla,pygame.event.get())
     elif ventana_actual == "agregar":
         ventana_actual = mostrar_agregar_opciones(pantalla,pygame.event.get())
+    elif ventana_actual == "terminado":
+        if bandera_juego == False:
+            bandera_juego = True
+       
+        ventana_actual = mostrar_juego_terminado(pantalla,pygame.event.get(),juego.puntuacion)
           
        
     

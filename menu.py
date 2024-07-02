@@ -2,6 +2,7 @@ import pygame
 from constantes import *
 from opciones import *
 
+
 pygame.init()
 #fondo
 imagen = pygame.image.load("imagenes/god-of-questions.png")#Se carga la imagen de fondo
@@ -50,7 +51,7 @@ def mostrar_menu(pantalla:pygame.Surface,eventos):
                 print("PUNTUACIONES")
                 click_sonido.play()
                 click_sonido.set_volume(volumen_sonidos)
-                #retorno = "puntuaciones"
+                retorno = "puntuaciones"
             elif marco_rect4.collidepoint(evento.pos):
                 click_sonido.set_volume(volumen_sonidos)
                 click_sonido.play()

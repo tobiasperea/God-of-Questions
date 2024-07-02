@@ -46,20 +46,20 @@ cartas_respuestas = [
 ]
 for carta in cartas_respuestas:
     carta['superficie'].blit(marco_pregunta1, (0,0))
-fuente_pregunta = pygame.font.SysFont("Arial Narrow",30)
+fuente_pregunta = pygame.font.SysFont("Argelian",30)
 fuente_respuesta = pygame.font.SysFont("Arial Narrow",20)
 fuente_puntuacion = pygame.font.SysFont("Arial Narrow",20)
 
 click_sonido = pygame.mixer.Sound("musicaysonidos/Taco Bell Bong - Sound Effect (HD).mp3")
 click_sonido.set_volume(volumen_sonidos)
 random.shuffle(lista_preguntas)
+
 indice_pregunta = 0
-indice_correcta = 5
 puntuacion = 0
 
 def mostrar_juego(pantalla:pygame.Surface,eventos):
     global indice_pregunta
-    global indice_correcta
+    
     global puntuacion
     retorno = "juego"#Un estado de la ventana en la que estoy parado
 
@@ -103,7 +103,7 @@ def mostrar_juego(pantalla:pygame.Surface,eventos):
                         
                         indice_pregunta+=1    
                         
-                        #retorno = "terminado"
+                        retorno = "terminado"
                         
                         if indice_pregunta != len(lista_preguntas):
                                 pregunta = lista_preguntas[indice_pregunta]
