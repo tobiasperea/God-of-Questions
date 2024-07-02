@@ -1,4 +1,5 @@
 import pygame
+from funciones import *
 from constantes import *
 from zeustereta import *
 from juego import *
@@ -44,8 +45,6 @@ while corriendo:
        
     
             
-        
-    
 #       if bandera_juego:
 #           pygame.mixer.music.load("musica.mp3") #Define musica de fondo mientras juego
 #           pygame.mixer.music.play(-1)
@@ -59,7 +58,7 @@ while corriendo:
 #           pygame.mixer.music.stop() #Detiene mi música de fondo
 #           bandera_juego = True
 #       ventana_actual = mostrar_juego_terminado(pantalla,pygame.event.get(),juego.puntuacion)
-    
+
     elif ventana_actual == "salir":
         corriendo = False
                        

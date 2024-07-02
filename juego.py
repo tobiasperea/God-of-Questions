@@ -64,7 +64,9 @@ def mostrar_juego(pantalla:pygame.Surface,eventos):
     retorno = "juego"#Un estado de la ventana en la que estoy parado
 
     pregunta = lista_preguntas[indice_pregunta]
-    correcta = lista_preguntas[indice_correcta]
+   
+    
+    
     
 
     
@@ -111,40 +113,8 @@ def mostrar_juego(pantalla:pygame.Surface,eventos):
                             random.shuffle(lista_preguntas)
                             pregunta = lista_preguntas[indice_pregunta]
                         puntuacion -= 50
-
-                                 
-            
-            
-                """if marco_pregunta_1.collidepoint(evento.pos):
-                    print("Respuesta 1")
-                    for i in range(len(cartas_respuestas)):
-                        if pregunta['correcta'] == (i + 1):
-                            click_sonido.play()
-                            print("RESPUESTA CORRECTA")
-                            indice_pregunta += 1
-                elif marco_pregunta_2.collidepoint(evento.pos):
-                    print("respuesta 2")
-                    for i in range(len(cartas_respuestas)):
-                        if pregunta['correcta'] == (i + 1):
-                            click_sonido.play()
-                            print("RESPUESTA CORRECTA")
-                            indice_pregunta += 1
-                elif marco_pregunta_3.collidepoint(evento.pos):
-                    print("Respuesta 3")
-                    for i in range(len(cartas_respuestas)):
-                        if pregunta['correcta'] == (i + 1):
-                            click_sonido.play()
-                            print("RESPUESTA CORRECTA")
-                            indice_pregunta += 1
-                elif marco_pregunta_4.collidepoint(evento.pos):
-                    print("respues 4")
-                    for i in range(len(cartas_respuestas)):
-                        if pregunta['correcta'] == (i + 1):
-                            click_sonido.play()
-                            print("RESPUESTA CORRECTA")
-                            indice_pregunta += 1"""
-        elif evento.type == pygame.QUIT:
-            retorno = "salir" #El estado salir -> Cuando se le da a la X
+        if evento.type == pygame.QUIT:
+            retorno = "salir" 
 
     pantalla.blit(imagen_juego,(0,0))# se carga el fondo
     """pantalla.blit(marco_pregunta1, marco_pregunta_1.topleft) #--se cargan los rectangulos
