@@ -23,8 +23,8 @@ def blit_text(surface, text, pos, font, color=pygame.Color('black')):
         y += word_height  # Start on new row.
 
 pygame.init()
-marco_pregunta1 = pygame.image.load("imagenes\cuadrado_prueba.png")
-carta_pregunta = {"superficie":pygame.Surface((350,150)),"rectangulo":pygame.Rect((0,0,0,0))}
+marco_pregunta1 = pygame.image.load("imagenes/cuadrado_prueba.png")
+carta_pregunta = {"superficie":pygame.Surface((300,100)),"rectangulo":pygame.Rect((0,0,0,0))}
 
 imagen_juego = pygame.image.load("imagenes/zeus.png")#Se carga la imagen de fondo
 
@@ -57,11 +57,29 @@ random.shuffle(lista_preguntas)
 indice_pregunta = 0
 puntuacion = 0
 
+limite_tiempo = 10
+tiempo_inicial = 0
+tiempo_inicializado = False
+tiempo_inicial = pygame.time.get_ticks()
+
 def mostrar_juego(pantalla:pygame.Surface,eventos):
     global indice_pregunta
-    
+    global limite_tiempo
+    global tiempo_inicial
+    global tiempo_inicializado
     global puntuacion
     retorno = "juego"#Un estado de la ventana en la que estoy parado
+    if not tiempo_inicializado:
+        tiempo_inicial = pygame.time.get_ticks()
+        tiempo_inicializado = True
+    
+    tiempo_actual = pygame.time.get_ticks()
+    tiempo_transcurrido = (tiempo_actual - tiempo_inicial) / 1000
+    tiempo_restante = limite_tiempo - tiempo_transcurrido
+
+    if tiempo_restante <= 0:
+        retorno = "terminado"
+        
 
     pregunta = lista_preguntas[indice_pregunta]
    
@@ -122,24 +140,27 @@ def mostrar_juego(pantalla:pygame.Surface,eventos):
     pantalla.blit(marco_pregunta3, marco_pregunta_3.topleft)
     pantalla.blit(marco_pregunta4, marco_pregunta_4.topleft)"""
 
-    pantalla.blit(carta_pregunta['superficie'],(80,50))
+    pantalla.blit(carta_pregunta['superficie'],(100,150))
     #Muestro el texto (USANDO PANTALLA)
     blit_text(carta_pregunta['superficie'],pregunta['preguntas'],(10,10),fuente_pregunta,(255,255,255))
     
-    cartas_respuestas[0]['rectangulo'] = pantalla.blit(cartas_respuestas[0]['superficie'],(40, 250))
+    cartas_respuestas[0]['rectangulo'] = pantalla.blit(cartas_respuestas[0]['superficie'],(50, 300))
     blit_text(cartas_respuestas[0]["superficie"],pregunta['respuesta_1'],(10,10),fuente_respuesta,(255,255,255))
    
     #IMPRIMO EN PANTALLA LA CARTA R2 Y SU TEXTO
-    cartas_respuestas[1]['rectangulo'] = pantalla.blit(cartas_respuestas[1]['superficie'],(250, 250))
+    cartas_respuestas[1]['rectangulo'] = pantalla.blit(cartas_respuestas[1]['superficie'],(300, 300))
     blit_text(cartas_respuestas[1]["superficie"],pregunta['respuesta_2'],(10,10),fuente_respuesta,(255,255,255))
    
     #IMPRIMO EN PANTALLA LA CARTA R3 Y SU TEXTO
-    cartas_respuestas[2]['rectangulo'] = pantalla.blit(cartas_respuestas[2]['superficie'],(40, 350))
+    cartas_respuestas[2]['rectangulo'] = pantalla.blit(cartas_respuestas[2]['superficie'],(50, 400))
     blit_text(cartas_respuestas[2]["superficie"],pregunta['respuesta_3'],(10,10),fuente_respuesta,(255,255,255))
    
     #IMPRIMO EN PANTALLA LA CARTA R4 Y SU TEXTO
-    cartas_respuestas[3]['rectangulo'] = pantalla.blit(cartas_respuestas[3]['superficie'],(250, 350))
+    cartas_respuestas[3]['rectangulo'] = pantalla.blit(cartas_respuestas[3]['superficie'],(300, 400))
     blit_text(cartas_respuestas[3]["superficie"],pregunta['respuesta_4'],(10,10),fuente_respuesta,(255,255,255))
 
     blit_text(pantalla,f"Puntuación: {puntuacion} puntos",(10,10),fuente_puntuacion,(0,0,0))
+
+    blit_text(pantalla, f"Tiempo: {int(tiempo_restante)}", (10, 50), fuente_puntuacion, (255, 255, 255))
+    
     return retorno
