@@ -49,10 +49,10 @@ marco_flecha_mas_respuestas = flecha_disminuir.get_rect(topleft=(450,230))
 marco_flecha_menos_tiempo = flecha_aumentar.get_rect(topleft=(300,400))
 marco_flecha_mas_tiempo = flecha_disminuir.get_rect(topleft=(450,400))
 
-cantidad_puntos = 40
+cantidad_puntos = 100
 cantidad_oportunidades = 3
 cantidad_respuestas = 4
-cantidad_tiempo = 120
+cantidad_tiempo = 90
 fuente_datos = pygame.font.SysFont("Argelian",20)
 
 def mostrar_agregar_opciones(pantalla:pygame.Surface,eventos):

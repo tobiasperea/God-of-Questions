@@ -23,6 +23,9 @@ def blit_text(surface, text, pos, font, color=pygame.Color('black')):
         x = pos[0]  # Reset the x.
         y += word_height  # Start on new row.
 
+
+
+
 pygame.init()
 marco_pregunta1 = pygame.image.load("imagenes/marco_pregunta1.png")
 marco_respuesta = pygame.image.load("imagenes/marco_respuesta.png")
@@ -66,6 +69,9 @@ tiempo_inicializado = False
 puntos = cantidad_puntos
 tiempo_inicial = pygame.time.get_ticks()
 
+
+
+
 def mostrar_juego(pantalla:pygame.Surface,eventos):
     global indice_pregunta
     global limite_tiempo
@@ -74,6 +80,8 @@ def mostrar_juego(pantalla:pygame.Surface,eventos):
     global puntuacion
     global vidas
     global cantidad_puntos
+    
+    
     retorno = "juego"#Un estado de la ventana en la que estoy parado
     if not tiempo_inicializado:
         tiempo_inicial = pygame.time.get_ticks()
