@@ -38,7 +38,7 @@ def guardar_nombre(nombre, puntuacion):
         "fecha": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
     with open("partidas.json", "a") as archivo:
-        archivo.write(json.dumps(datos) + "\n")
+        archivo.write(json.dumps(datos) +  "\n")
 
 def mostrar_juego_terminado(pantalla:pygame.Surface, eventos, puntuacion):
     global nombre

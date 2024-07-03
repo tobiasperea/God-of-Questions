@@ -8,6 +8,7 @@ from menu import *
 from configurar_preguntas import *
 from terminado import *
 import juego
+from ranking import *
 import opciones
 #from juego import *
 pygame.init() #Se inicializa pygame
@@ -37,8 +38,8 @@ while corriendo:
     
     if ventana_actual == 'menu':
         ventana_actual = mostrar_menu(pantalla,pygame.event.get())
-#   elif ventana_actual == 'opciones':
-#       ventana_actual = mostrar_opciones(pantalla,pygame.event.get())
+    elif ventana_actual == 'puntuaciones':
+        ventana_actual = mostrar_ranking(pantalla,pygame.event.get())
     elif ventana_actual == "juego":
         if bandera_juego:
             bandera_juego = False
