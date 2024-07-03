@@ -1,17 +1,32 @@
 [
     {
-        "nombre": "AAAA",
-        "puntuacion": -150,
-        "fecha": "2024-07-03 01:40:28"
+        "nombre": "AWDA",
+        "puntuacion": -70,
+        "fecha": "2024-07-03 16:46:14"
     },
     {
         "nombre": "AWDW",
-        "puntuacion": -50,
-        "fecha": "2024-07-03 01:40:51"
+        "puntuacion": -150,
+        "fecha": "2024-07-03 16:50:41"
     },
     {
-        "nombre": "TOBI",
-        "puntuacion": -70,
-        "fecha": "2024-07-03 02:04:15"
+        "nombre": "ADWA",
+        "puntuacion": -150,
+        "fecha": "2024-07-03 16:56:16"
+    },
+    {
+        "nombre": "AWDA",
+        "puntuacion": -150,
+        "fecha": "2024-07-03 17:00:16"
+    },
+    {
+        "nombre": "ADWA",
+        "puntuacion": -150,
+        "fecha": "2024-07-03 17:05:12"
+    },
+    {
+        "nombre": "AWDA",
+        "puntuacion": -150,
+        "fecha": "2024-07-03 17:06:38"
     }
 ]

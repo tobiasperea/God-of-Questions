@@ -67,8 +67,8 @@ def mostrar_juego_terminado(pantalla:pygame.Surface, eventos, puntuacion):
                 nombre = nombre[:-1]#Elimino el último
                 cuadro['superficie'].fill((0,0,0))# limpio la superficie de su texto anterior
 
-            if letra_presionada == 'space':
-                nombre += " "
+            """if letra_presionada == 'space':
+                nombre += " """
             
             if len(letra_presionada) == 1 and letra_presionada.isalpha(): 
                 if bloc_mayus:
@@ -78,7 +78,7 @@ def mostrar_juego_terminado(pantalla:pygame.Surface, eventos, puntuacion):
 
             if len(nombre) == 4:
                 guardar_nombre(nombre,puntuacion)
-                retorno="menu"
+                retorno="salir"
                   
         elif evento.type == pygame.QUIT:
             retorno = "salir"
