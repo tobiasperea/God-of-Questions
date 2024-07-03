@@ -13,5 +13,65 @@
         "nombre": "TOBI",
         "puntuacion": -70,
         "fecha": "2024-07-03 02:04:15"
+    },
+    {
+        "nombre": "JOSI",
+        "puntuacion": 100,
+        "fecha": "2024-07-03 14:56:29"
+    },
+    {
+        "nombre": "JOSE",
+        "puntuacion": 90,
+        "fecha": "2024-07-03 14:56:29"
+    },
+    {
+        "nombre": "JOSA",
+        "puntuacion": 80,
+        "fecha": "2024-07-03 14:56:29"
+    },
+    {
+        "nombre": "JOSU",
+        "puntuacion": 70,
+        "fecha": "2024-07-03 14:56:29"
+    },
+    {
+        "nombre": "JOSO",
+        "puntuacion": 60,
+        "fecha": "2024-07-03 14:56:29"
+    },
+    {
+        "nombre": "JOCE",
+        "puntuacion": 40,
+        "fecha": "2024-07-03 14:56:29"
+    },
+    {
+        "nombre": "JOJA",
+        "puntuacion": 50,
+        "fecha": "2024-07-03 14:56:29"
+    },
+    {
+        "nombre": "JOJE",
+        "puntuacion": 30,
+        "fecha": "2024-07-03 14:56:29"
+    },
+    {
+        "nombre": "JOJO",
+        "puntuacion": 20,
+        "fecha": "2024-07-03 14:56:29"
+    },
+    {
+        "nombre": "OPAL",
+        "puntuacion": -150,
+        "fecha": "2024-07-03 15:07:42"
+    },
+    {
+        "nombre": "YYYY",
+        "puntuacion": -110,
+        "fecha": "2024-07-03 15:09:07"
+    },
+    {
+        "nombre": "VALE",
+        "puntuacion": -110,
+        "fecha": "2024-07-03 15:42:20"
     }
 ]
