@@ -30,6 +30,10 @@ fondo_agregar = pygame.image.load("imagenes/fondo_agregar.png")
 #marco_pregunta = pygame.image.load("imagenes/marco_solo.png")
 flecha_aumentar = pygame.image.load("imagenes/flecha_subida.png")
 flecha_disminuir = pygame.image.load("imagenes/flecha.png")
+cartel_puntos = pygame.image.load("imagenes/cartel_puntos.png")
+cartel_vidas = pygame.image.load("imagenes/cartel_vidas.png")
+cartel_tiempo = pygame.image.load("imagenes/cartel_tiempo.png")
+cartel_respuestas = pygame.image.load("imagenes/cartel_respuestas.png")
 salida = pygame.image.load("imagenes/flecha_salida.png")
 #----------------------rect-----------------------
 #--salida--
@@ -108,13 +112,16 @@ def mostrar_agregar_opciones(pantalla:pygame.Surface,eventos):
 
     pantalla.blit(fondo_agregar,(0,0))
     pantalla.blit(salida,marco_salida)
-    blit_text(marco_puntos,str(cantidad_puntos),(10,10),fuente_datos,(0,255,0))
+    pantalla.blit(cartel_vidas,(0,170))
+    pantalla.blit(cartel_puntos,(0,0))
+    pantalla.blit(cartel_tiempo,(270,170))
+    blit_text(marco_puntos,str(cantidad_puntos),(15,20),fuente_datos,(0,255,0))
     pantalla.blit(marco_puntos,(100,220))
-    blit_text(marco_respuestas,str(cantidad_respuestas),(10,10),fuente_datos,(0,255,0))
+    #blit_text(marco_respuestas,str(cantidad_respuestas),(10,10),fuente_datos,(0,255,0))
     pantalla.blit(marco_respuestas,(375,220))
-    blit_text(marco_vidas,str(cantidad_oportunidades),(10,10),fuente_datos,(0,255,0))
+    blit_text(marco_vidas,str(cantidad_oportunidades),(20,20),fuente_datos,(0,255,0))
     pantalla.blit(marco_vidas,(100,390))
-    blit_text(marco_tiempo,str(cantidad_tiempo),(10,10),fuente_datos,(0,255,0))
+    blit_text(marco_tiempo,str(cantidad_tiempo),(15,20),fuente_datos,(0,255,0))
     pantalla.blit(marco_tiempo,(375,390))
     pantalla.blit(flecha_subida,marco_flecha_mas_puntos)
     pantalla.blit(flecha,marco_flecha_menos_puntos)
@@ -124,7 +131,7 @@ def mostrar_agregar_opciones(pantalla:pygame.Surface,eventos):
     pantalla.blit(flecha,marco_flecha_menos_respuestas)
     pantalla.blit(flecha_subida,marco_flecha_mas_tiempo)
     pantalla.blit(flecha,marco_flecha_menos_tiempo)
-            
+    pantalla.blit(cartel_respuestas,(270,0)) 
             
                                                    
     return retorno

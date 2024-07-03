@@ -17,6 +17,7 @@ flecha_subida = pygame.image.load("imagenes/flecha_subida.png")
 cartel_musica = pygame.image.load("imagenes/musica_cartel.png")
 cartel_sonidos = pygame.image.load("imagenes/sonidos_cartel.png")
 flecha_salida = pygame.image.load("imagenes/flecha_salida.png")
+proximamente = pygame.image.load("imagenes/cartel_respuestas.png")
 
 #marco objetivo
 marco_salir = flecha_salida.get_rect(topleft=(10,10))
@@ -67,22 +68,23 @@ def mostrar_opciones(pantalla:pygame.Surface,eventos):
                 if volumen_musica > 0:
                     volumen_musica -= 0.1
                     MUSICA_MENU.set_volume(volumen_musica)
-            elif sonido_flecha_subida.collidepoint(evento.pos):
-                print("SUBE sonido ")
-                click_sonido.play()
-                if volumen_sonidos < 0.96:
-                    volumen_sonidos += 0.1
-                    click_sonido.set_volume(volumen_sonidos)
-            elif sonido_flecha_bajada.collidepoint(evento.pos):
-                print("BAJA sonido")
-                click_sonido.play()
-                if volumen_sonidos > 0:
-                    volumen_sonidos -= 0.1
-                    click_sonido.set_volume(volumen_sonidos)
+#            elif sonido_flecha_subida.collidepoint(evento.pos):     No nos funciona
+#                print("SUBE sonido ")
+#                click_sonido.play()
+#                if volumen_sonidos < 0.96:
+#                    volumen_sonidos += 0.1
+#                    click_sonido.set_volume(volumen_sonidos)
+#            elif sonido_flecha_bajada.collidepoint(evento.pos):   
+#                print("BAJA sonido")
+#                click_sonido.play()
+#                if volumen_sonidos > 0:
+#                    volumen_sonidos -= 0.1
+#                    click_sonido.set_volume(volumen_sonidos)
                    
 
     pantalla.blit(imagen_opciones,(0,0))
     pantalla.blit(cartel_sonidos,(125,130))
+    pantalla.blit(proximamente,(125,130))
     pantalla.blit(cartel_musica,(125,0))
 
     if marco_actual_musica == "mute":

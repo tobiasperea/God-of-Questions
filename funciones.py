@@ -34,12 +34,11 @@ lista_preguntas =convertir_correcta_a_int(lista_preguntas)
 def mostrar_top(lista_elementos:list):
 
     if lista_elementos:
-        for i in range(0,10,1):
-            informacion = "TOP\n NOMBRE | PUNTUACION| FECHA |\n"
-            for puntaje in lista_elementos:
-                for clave in puntaje:
-                    informacion += str(puntaje[clave]) + " | "
+        informacion = "TOP\n NOMBRE | PUNTUACION| FECHA |\n"
+        for puntaje in lista_elementos:
+            for clave in puntaje:
+                informacion += str(puntaje[clave]) + " | "
 
-                informacion += "\n" 
+            informacion += "\n" 
         return informacion
     
