@@ -52,6 +52,10 @@ def guardar_nombre(nombre, puntuacion):
     with open("partidas.json", "w") as archivo:
         json.dump(partidas, archivo, indent=4)
 
+def restablecer_nombre():
+    global nombre
+    nombre = ""
+
 def mostrar_juego_terminado(pantalla:pygame.Surface, eventos, puntuacion):
     global nombre
     retorno = "terminado"
@@ -78,7 +82,10 @@ def mostrar_juego_terminado(pantalla:pygame.Surface, eventos, puntuacion):
 
             if len(nombre) == 4:
                 guardar_nombre(nombre,puntuacion)
-                retorno="salir"
+                inicializar_juego()
+                restablecer_nombre()
+                cuadro['superficie'].fill((0,0,0))
+                retorno="menu"
                   
         elif evento.type == pygame.QUIT:
             retorno = "salir"

@@ -1,6 +1,7 @@
 import pygame
 from constantes import *
 from opciones import *
+from juego import *
 
 
 pygame.init()
@@ -32,6 +33,7 @@ musica_smash = pygame.mixer.Sound("musicaysonidos/zeus-aparece.mp3")
 def mostrar_menu(pantalla:pygame.Surface,eventos):
     global volumen_sonidos
     retorno = "menu"#Un estado de la ventana en la que estoy parado
+    
     click_sonido.set_volume(volumen_sonidos)
     
     for evento in eventos:
@@ -42,6 +44,7 @@ def mostrar_menu(pantalla:pygame.Surface,eventos):
                 click_sonido.set_volume(volumen_sonidos)
                 #musica_smash.play()
                 retorno = "juego"
+                
             elif marco_rect3.collidepoint(evento.pos):
                 print("OPCIONES")
                 click_sonido.play()
