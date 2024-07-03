@@ -10,7 +10,7 @@ from terminado import *
 import juego
 from ranking import *
 import opciones
-#from juego import *
+
 pygame.init() #Se inicializa pygame
 #------------------fondo----------------------------
 pantalla = pygame.display.set_mode([500, 500])

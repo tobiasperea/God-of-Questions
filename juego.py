@@ -6,7 +6,7 @@ from configurar_preguntas import *
 import random
 import json
 import os
-
+#-----------funcion de texto---------------
 def blit_text(surface, text, pos, font, color=pygame.Color('black')):
     words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.
     space = font.size(' ')[0]  # The width of a space.
@@ -25,13 +25,14 @@ def blit_text(surface, text, pos, font, color=pygame.Color('black')):
         y += word_height  # Start on new row.
 
 pygame.init()
+#--------se cargan las imagenes----
 marco_pregunta1 = pygame.image.load("imagenes/marco_pregunta1.png")
 marco_respuesta = pygame.image.load("imagenes/marco_respuesta.png")
 carta_pregunta = {"superficie": pygame.Surface((280, 100)), "rectangulo": pygame.Rect((0, 0, 0, 0))}
 carta_pregunta["superficie"].blit(marco_pregunta1, (0, 0))
 
 imagen_juego = pygame.image.load("imagenes/zeus.png")  # Se carga la imagen de fondo
-
+#---------se crean botones---------
 cartas_respuestas = [
     {"superficie": pygame.Surface((100, 60)), "rectangulo": pygame.Rect((0, 0, 0, 0))},  # R1 -> 0
     {"superficie": pygame.Surface((100, 60)), "rectangulo": pygame.Rect((0, 0, 0, 0))},  # R2 -> 1
@@ -40,13 +41,15 @@ cartas_respuestas = [
 ]
 for carta in cartas_respuestas:
     carta['superficie'].blit(marco_respuesta, (0, 0))
+
+#----------fuentes-----
 fuente_pregunta = pygame.font.SysFont("Argelian", 30)
 fuente_respuesta = pygame.font.SysFont("Argelian", 20)
 fuente_puntuacion = pygame.font.SysFont("Argelian", 20)
-
+#-------sonidos
 click_sonido = pygame.mixer.Sound("musicaysonidos/Taco Bell Bong - Sound Effect (HD).mp3")
 click_sonido.set_volume(volumen_sonidos)
-
+#--------funcion que establece los valores-------
 def inicializar_juego():
     global indice_pregunta
     global puntuacion
@@ -58,7 +61,7 @@ def inicializar_juego():
    
 
     indice_pregunta = 0
-    puntuacion = 0  # Asegúrate de reiniciar la puntuación aquí
+    puntuacion = 0 
     vidas = cantidad_oportunidades
     limite_tiempo = cantidad_tiempo
     tiempo_inicial = 0
@@ -68,7 +71,7 @@ def inicializar_juego():
     
 random.shuffle(lista_preguntas)
 
-# Inicializar los valores del juego al inicio
+
 inicializar_juego()
 
 def mostrar_juego(pantalla: pygame.Surface, eventos):
@@ -114,7 +117,7 @@ def mostrar_juego(pantalla: pygame.Surface, eventos):
                         else:
                             # TERMINO EL JUEGO
                             retorno = "terminado"
-                            inicializar_juego()  # Reiniciar los valores del juego cuando termina
+                            inicializar_juego()  
                         puntuacion += cantidad_puntos
                         
                     else:
@@ -126,7 +129,7 @@ def mostrar_juego(pantalla: pygame.Surface, eventos):
                         vidas -= 1
                         if vidas <= 0:
                             retorno = "terminado"
-                            inicializar_juego()  # Reiniciar los valores del juego cuando termina
+                            inicializar_juego()  
                         else:
                             indice_pregunta += 1    
                         

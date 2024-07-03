@@ -57,12 +57,7 @@ def mostrar_ranking(pantalla:pygame.Surface,eventos): #funcion para cargar la ve
     retorno = 'puntuaciones'
     lista = parse_json("partidas.json") 
     
-    """for i in range(len(lista)):
-        for j in range(i+1,len(lista),1):
-            if(lista[i]['puntuacion'] < lista[j]['puntuacion']):
-                aux = lista[i]['puntuacion']
-                lista[i]['puntuacion'] = lista[j]['puntuacion']
-                lista[j]['puntuacion'] = aux"""
+    
     for i in range(len(lista)):  #Ordena la lista
         for j in range(i + 1, len(lista), 1):
             if lista[i]['puntuacion'] < lista[j]['puntuacion']:

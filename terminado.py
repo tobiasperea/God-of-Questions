@@ -4,7 +4,9 @@ from datetime import datetime
 from constantes import *
 from juego import *
 
+
 pygame.init()
+#------imagenes-----
 fondo = pygame.image.load("imagenes/caronte.png")
 fondo = pygame.transform.scale(fondo, (500, 500))
 cuadro_texto = pygame.image.load("imagenes/cuadrado_prueba.png")
@@ -30,7 +32,7 @@ def blit_text(surface, text, pos, font, color=pygame.Color('black')):
             x += word_width + space
         x = pos[0]  # Reset the x.
         y += word_height  # Start on new row.
-
+#--------guarda los datos------
 def guardar_nombre(nombre, puntuacion):
     datos = {
         "nombre": nombre,
@@ -51,11 +53,11 @@ def guardar_nombre(nombre, puntuacion):
     
     with open("partidas.json", "w") as archivo:
         json.dump(partidas, archivo, indent=4)
-
+#---------restablece el nombre---
 def restablecer_nombre():
     global nombre
     nombre = ""
-
+#------MUESTRA LA VENTANA DE FIN DEL JUEGO---
 def mostrar_juego_terminado(pantalla:pygame.Surface, eventos, puntuacion):
     global nombre
     retorno = "terminado"

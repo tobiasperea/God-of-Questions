@@ -56,9 +56,9 @@ marco_flecha_mas_tiempo = flecha_disminuir.get_rect(topleft=(450,400))
 cantidad_puntos = 100
 cantidad_oportunidades = 3
 cantidad_respuestas = 4
-cantidad_tiempo = 90
+cantidad_tiempo = 100
 fuente_datos = pygame.font.SysFont("Argelian",20)
-
+#--------------MUESTRA LAS OPCIONES----------
 def mostrar_agregar_opciones(pantalla:pygame.Surface,eventos):
     retorno = "agregar"
     global cantidad_puntos
@@ -109,7 +109,7 @@ def mostrar_agregar_opciones(pantalla:pygame.Surface,eventos):
         elif evento.type == pygame.QUIT:
             retorno = "salir" #El estado salir -> Cuando se le da a la X
 
-
+#----------BLITEOS-----------
     pantalla.blit(fondo_agregar,(0,0))
     pantalla.blit(salida,marco_salida)
     pantalla.blit(cartel_vidas,(0,170))
