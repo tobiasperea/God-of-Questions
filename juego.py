@@ -71,7 +71,7 @@ def inicializar_juego():
     
 random.shuffle(lista_preguntas)
 
-
+resto_puntos = 50
 inicializar_juego()
 
 def mostrar_juego(pantalla: pygame.Surface, eventos):
@@ -82,6 +82,7 @@ def mostrar_juego(pantalla: pygame.Surface, eventos):
     global puntuacion
     global vidas
     global cantidad_puntos
+    global resto_puntos
     
     retorno = "juego"  # Un estado de la ventana en la que estoy parado
     if not tiempo_inicializado:
@@ -117,7 +118,7 @@ def mostrar_juego(pantalla: pygame.Surface, eventos):
                         else:
                             # TERMINO EL JUEGO
                             retorno = "terminado"
-                            inicializar_juego()  
+                            #inicializar_juego()  
                         puntuacion += cantidad_puntos
                         
                     else:
@@ -129,19 +130,21 @@ def mostrar_juego(pantalla: pygame.Surface, eventos):
                         vidas -= 1
                         if vidas <= 0:
                             retorno = "terminado"
-                            inicializar_juego()  
+                            #inicializar_juego()  
                         else:
                             indice_pregunta += 1    
                         
                         if indice_pregunta != len(lista_preguntas):
                             pregunta = lista_preguntas[indice_pregunta]
                         
-                        puntuacion -= 50
+                        puntuacion -= resto_puntos
+                    
                         
 
         if evento.type == pygame.QUIT:
             retorno = "salir" 
 
+    puntaje_final = puntuacion
     pantalla.blit(imagen_juego, (0, 0))  # se carga el fondo
 
     pantalla.blit(carta_pregunta['superficie'], (100, 150))
@@ -163,7 +166,7 @@ def mostrar_juego(pantalla: pygame.Surface, eventos):
     cartas_respuestas[3]['rectangulo'] = pantalla.blit(cartas_respuestas[3]['superficie'], (300, 400))
     blit_text(cartas_respuestas[3]["superficie"], pregunta['respuesta_4'], (20, 20), fuente_respuesta, (255, 243, 0))
 
-    blit_text(pantalla, f"Puntuación: {puntuacion} puntos", (10, 10), fuente_puntuacion, (255, 243, 0))
+    blit_text(pantalla, f"Puntuación: {puntaje_final} puntos", (10, 10), fuente_puntuacion, (255, 243, 0))
 
     blit_text(pantalla, f"Tiempo: {int(tiempo_restante)}", (10, 50), fuente_puntuacion, (255, 243, 0))
 
