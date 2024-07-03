@@ -65,7 +65,7 @@ def mostrar_juego_terminado(pantalla:pygame.Surface, eventos, puntuacion):
                         
             if letra_presionada == 'backspace' and len(nombre) > 0:
                 nombre = nombre[:-1]#Elimino el último
-                #cuadro['superficie'].fill(COLOR_AZUL)# limpio la superficie de su texto anterior
+                cuadro['superficie'].fill((0,0,0))# limpio la superficie de su texto anterior
 
             if letra_presionada == 'space':
                 nombre += " "
@@ -78,7 +78,7 @@ def mostrar_juego_terminado(pantalla:pygame.Surface, eventos, puntuacion):
 
             if len(nombre) == 4:
                 guardar_nombre(nombre,puntuacion)
-                retorno="salir"
+                retorno="menu"
                   
         elif evento.type == pygame.QUIT:
             retorno = "salir"
