@@ -169,7 +169,7 @@ def mostrar_juego(pantalla:pygame.Surface,eventos):
     cartas_respuestas[3]['rectangulo'] = pantalla.blit(cartas_respuestas[3]['superficie'],(300, 400))
     blit_text(cartas_respuestas[3]["superficie"],pregunta['respuesta_4'],(20,20),fuente_respuesta,(255,243,0))
 
-    blit_text(pantalla,f"Puntuación: {puntuacion} puntos",(10,10),fuente_puntuacion,(255,0,0))
+    blit_text(pantalla,f"Puntuación: {puntuacion} puntos",(10,10),fuente_puntuacion,(255,243,0))
 
     blit_text(pantalla, f"Tiempo: {int(tiempo_restante)}", (10, 50), fuente_puntuacion, (255,243,0))
 
