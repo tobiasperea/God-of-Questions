@@ -50,7 +50,7 @@ fuente_puntuacion = pygame.font.SysFont("Argelian", 20)
 click_sonido = pygame.mixer.Sound("musicaysonidos/Taco Bell Bong - Sound Effect (HD).mp3")
 click_sonido.set_volume(volumen_sonidos)
 #--------funcion que establece los valores-------
-def inicializar_juego():
+def inicializar_juego(puntos_actuales):
     global indice_pregunta
     global puntuacion
     global vidas
@@ -58,10 +58,13 @@ def inicializar_juego():
     global tiempo_inicial
     global tiempo_inicializado
     global puntos
-   
+
 
     indice_pregunta = 0
-    puntuacion = 0 
+    if puntos_actuales == 0:
+        puntuacion = 0 
+    else:
+        puntuacion = puntos_actuales
     vidas = cantidad_oportunidades
     limite_tiempo = cantidad_tiempo
     tiempo_inicial = 0
@@ -72,7 +75,7 @@ def inicializar_juego():
 random.shuffle(lista_preguntas)
 
 resto_puntos = 50
-inicializar_juego()
+inicializar_juego(0)
 
 def mostrar_juego(pantalla: pygame.Surface, eventos):
     global indice_pregunta
@@ -103,22 +106,25 @@ def mostrar_juego(pantalla: pygame.Surface, eventos):
     for evento in eventos:
         if evento.type == pygame.MOUSEBUTTONDOWN:
             for i in range(len(cartas_respuestas)):
+                
                 if cartas_respuestas[i]["rectangulo"].collidepoint(evento.pos):
+                    
                     if pregunta["correcta"] == (i + 1):
                         click_sonido.play()
                         print("RESPUESTA CORRECTA") 
                         carta_pregunta['superficie'].blit(marco_pregunta1, (0, 0))
                         for carta in cartas_respuestas:
                             carta['superficie'].blit(marco_respuesta, (0, 0))
-
+                        
                         indice_pregunta += 1    
 
                         if indice_pregunta != len(lista_preguntas):
                             pregunta = lista_preguntas[indice_pregunta]
                         else:
                             # TERMINO EL JUEGO
+                            inicializar_juego(puntuacion) 
                             retorno = "terminado"
-                            #inicializar_juego()  
+                             
                         puntuacion += cantidad_puntos
                         
                     else:
@@ -126,18 +132,26 @@ def mostrar_juego(pantalla: pygame.Surface, eventos):
                         carta_pregunta['superficie'].blit(marco_pregunta1, (0, 0))
                         for carta in cartas_respuestas:
                             carta['superficie'].blit(marco_respuesta, (0, 0))
+
+                        
                         
                         vidas -= 1
                         if vidas <= 0:
+                            inicializar_juego(puntuacion) 
                             retorno = "terminado"
-                            #inicializar_juego()  
+                             
                         else:
                             indice_pregunta += 1    
                         
                         if indice_pregunta != len(lista_preguntas):
                             pregunta = lista_preguntas[indice_pregunta]
+                        else:
+                            indice_pregunta = 0
+                            random.shuffle(lista_preguntas)
+                            pregunta = lista_preguntas[indice_pregunta]
                         
                         puntuacion -= resto_puntos
+                        
                     
                         
 

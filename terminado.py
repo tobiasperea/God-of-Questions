@@ -57,6 +57,11 @@ def guardar_nombre(nombre, puntuacion):
 def restablecer_nombre():
     global nombre
     nombre = ""
+
+def restablecer_puntuacion():
+    global puntuacion
+    puntuacion = 0
+
 #------MUESTRA LA VENTANA DE FIN DEL JUEGO---
 def mostrar_juego_terminado(pantalla:pygame.Surface, eventos, puntuacion):
     global nombre
@@ -84,8 +89,9 @@ def mostrar_juego_terminado(pantalla:pygame.Surface, eventos, puntuacion):
 
             if len(nombre) == 4:
                 guardar_nombre(nombre,puntuacion)
-                inicializar_juego()
+                inicializar_juego(0)
                 restablecer_nombre()
+                puntuacion = 0
                 cuadro['superficie'].fill((0,0,0))
                 retorno="menu"
                   
